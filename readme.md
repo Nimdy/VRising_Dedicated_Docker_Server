@@ -42,3 +42,5 @@ cp configs/banlist.txt data/VRisingServer_Data/StreamingAssets/Settings/
  maloneweb/docker-wine-base:latest
  
  honestventures/steamcmd-linux-wine:latest
+ 
+ OG Script: https://github.com/toninog/docker-vrising <--- awesome guy!
