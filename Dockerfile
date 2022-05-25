@@ -1,56 +1,60 @@
-FROM maloneweb/docker-wine-base:latest
+FROM steamcmd/steamcmd:ubuntu-20
 
-ARG DEBIAN_FRONTEND="noninteractive"
-ARG WINE_MONO_VERSION="4.7.3"
+ARG WINE_REL="stable"
+ARG WINE_VER="7.0.0.0~focal-1"
 
-# XVFB
-ARG DISPLAY=:0
+ENV STEAMCMD /usr/bin/steamcmd
+ENV STEAMAPPID 1829350
+ENV STEAMAPPDIR /app/vrising
+ENV SERVERNAME "VRising Server Testing"
+ENV SAVENAME "vrisingserver"
 
-# Wine
-ARG WINEPREFIX=/root/.wine
-ARG WINEARCH=win64
+ENV WINE_REL=$WINE_REL
+ENV WINE_VER=$WINE_VER
+# stable, devel, staging
+ENV WINE_REPLACE_REL "stable"
 
-# Custom Helper Scripts
-COPY scripts/waitforprocess.sh /usr/local/bin/waitforprocess.sh
-COPY scripts/x11-start.sh /usr/local/bin/x11-start.sh
+# Prepare the environment
+RUN set -x \
+    && dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+        wget \
+        software-properties-common \
+        gnupg2 \
+    && wget -O - https://dl.winehq.org/wine-builds/winehq.key | apt-key add - \
+    && apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+        xauth \
+        gettext \
+        winbind \
+        xvfb \
+        lib32gcc1 \
+    && apt-get install -y --install-recommends --no-install-suggests \
+        winehq-${WINE_REL}=${WINE_VER} \
+        wine-${WINE_REL}=${WINE_VER} \
+        wine-${WINE_REL}-amd64=${WINE_VER} \
+        wine-${WINE_REL}-i386=${WINE_VER} \
+    && mkdir -p "${STEAMAPPDIR}" \
+    && "${STEAMCMD}" +force_install_dir /home/steam/steamworks_sdk +login anonymous \
+        +@sSteamCmdForcePlatformType windows +app_update 1007 +quit \
+    && cp /home/steam/steamworks_sdk/*64.dll "${STEAMAPPDIR}"/ \
+    && apt-get remove --purge -y \
+        wget \
+        software-properties-common \
+        gnupg2 \
+    && apt-get clean autoclean \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
-# Build Dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    # Required for winetricks
-    cabextract \
-    p7zip \
-    unzip \
-    wget \
-    xvfb \
-    zenity \
-    # Winetricks and Permissions
-    && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -O /usr/local/bin/winetricks \
-    && chmod +x /usr/local/bin/winetricks \
-    && chmod +x /usr/local/bin/*.sh \
-    # Mono For Wine
-    && mkdir /tmp/wine-mono \
-    && wget https://dl.winehq.org/wine/wine-mono/${WINE_MONO_VERSION}/wine-mono-${WINE_MONO_VERSION}.msi -O /tmp/wine-mono/wine-mono-${WINE_MONO_VERSION} \ 
-    # Install .NET Framework 2.0 and 4.6.2
-    && wine wineboot --init \
-    && waitforprocess.sh wineserver \
-    && x11-start.sh \
-    && winetricks --unattended --force vcrun2019 dotnet20 dotnet40 dotnet45 msxml6 dotnet_verifier
+COPY entry.sh /entry.sh
 
-# Copy Over Wine Prefix
-FROM maloneweb/docker-wine-base:latest
+WORKDIR ${STEAMAPPDIR}
 
-ENV WINEPREFIX /root/.wine
-ENV WINEARCH win64
+EXPOSE 9876/udp
+EXPOSE 9877/udp
 
-RUN mkdir -p /usr/share/wine/mono
+VOLUME ${STEAMAPPDIR}
 
-COPY --from=0 /root/.wine /root/.wine
-COPY --from=0 /tmp/wine-mono /usr/share/wine/mono
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    # Required for winetricks
-    cabextract \
-    p7zip \
-    unzip \
-    wget \
-    xvfb
+ENTRYPOINT "/entry.sh"
