@@ -1,6 +1,6 @@
 
 # VRising Dedicated Server Linux Docker
-Run a VRising Dedicated Server on Linux via Docker
+Run a VRising Dedicated Server on Linux via Docker (TESTED on Ubuntu 20.04.4 LTS Focal Fossa 4CPU 8GB RAM)
 
 Visit https://github.com/StunlockStudios/vrising-dedicated-server-instructions for additionall json configuration settings.
 
