@@ -31,6 +31,7 @@ cp configs/ServerGameSettings.json data/VRisingServer_Data/StreamingAssets/Setti
 cp configs/ServerVoipSettings.json data/VRisingServer_Data/StreamingAssets/Settings/
 cp configs/adminlist.txt data/VRisingServer_Data/StreamingAssets/Settings/
 cp configs/banlist.txt data/VRisingServer_Data/StreamingAssets/Settings/
+./start_vrising_container.sh
 ```
  ---
  
