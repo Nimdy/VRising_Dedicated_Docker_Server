@@ -3,7 +3,7 @@ docker run -d --rm \
 -e TZ="Europe/London" \
 -e "SERVERNAME=My V Server" \
 -e "SAVENAME=server" \
--v /data/games/vrising:/app/vrising \
+-v data:/app/vrising \
 -p 9876:9876/udp \
 -p 9877:9877/udp \
 njordmenu/vrising:latest
