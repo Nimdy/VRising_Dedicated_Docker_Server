@@ -1,0 +1,12 @@
+{
+ "VOIPEnabled": true,
+ "VOIPIssuer": "",
+ "VOIPSecret": "",
+ "VOIPAppUserId": "",
+ "VOIPAppUserPwd": "",
+ "VOIPVivoxDomain": "",
+ "VOIPAPIEndpoint": "",
+ "VOIPConversationalDistance": 14,
+ "VOIPAudibleDistance": 40,
+ "VOIPFadeIntensity": 2.0
+}
