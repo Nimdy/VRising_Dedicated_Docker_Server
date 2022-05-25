@@ -136,84 +136,6 @@ sudo docker run -it -d --name vRisingServer --rm -v $PWD/data:/data -p 27015:270
 
 }
 
-########################################################################
-###############Display VRising Start Configuration######################
-########################################################################
-function display_start_vrising() {
-
-}
-########################################################################
-###############Display VRising World Data Folder########################
-########################################################################
-function display_world_data_folder() {
-
-}
-########################################################################
-######################Stop VRising Server Service#######################
-########################################################################
-function stop_vrising_server() {
-
-}
-########################################################################
-###################Start VRising Server Service#########################
-########################################################################
-function start_vrising_server() {
-
-}
-########################################################################
-####################Restart VRising Server Service######################
-########################################################################
-function restart_vrising_server() {
-
-}
-########################################################################
-#####################Display VRising Server Status######################
-########################################################################
-function display_vrising_server_status() {
-
-}
-
-########################################################################
-#########################Print System INFOS#############################
-########################################################################
-function display_system_info() {
-
-}
-########################################################################
-#############################PRINT NETWORK INFO#########################
-########################################################################
-function display_network_info() {
-
-}
-########################################################################
-################Display History of Connected Players####################
-########################################################################
-function display_player_history() {
-
-}
-
-
-########################################################################
-##################START CHANGE VRising START CONFIG#####################
-########################################################################
-
-function print_current_config() {
-
-}
-
-
-function write_config_and_restart() {
-
-}
-
-function write_public_on_config_and_restart() {
-
-}
-
-function write_public_off_config_and_restart() {
-
-}
-
 
 
 ########################################################################
@@ -247,7 +169,7 @@ function write_public_off_config_and_restart() {
 
 function check_menu_script_repo() {
 
-latestScript=$(curl --connect-timeout 10 -s https://api.github.com/repos/Nimdy/VRising_Dedicated_Server/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+latestScript=$(curl --connect-timeout 10 -s https://api.github.com/repos/Nimdy/VRising_Dedicated_Docker_Server/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 echo $latestScript
 }
 
@@ -314,11 +236,8 @@ echo -ne "
 $(ColorOrange '-------------Check for Script Updates-----------')
 $(ColorOrange '-')$(ColorGreen ' 1)') Update Menu Script from GitHub
 $(ColorOrange '--------------VRising Server Commands-----------')
-$(ColorOrange '-')$(ColorGreen ' 2)') Install VRising Server
+$(ColorOrange '-')$(ColorGreen ' 2)') Install VRising Server on Fresh Server
 $(ColorOrange '---------Official VRising Server Update---------')
-$(ColorOrange '-')$(ColorGreen ' 3)') Check and Apply VRising Server Update
-$(ColorOrange '-----Edit Docker VRising Configuration--------')
-$(ColorOrange '-')$(ColorGreen ' 4)') Display or Edit VRising Config File
 $(ColorOrange '------------------------------------------------')
 $(ColorGreen ' 0)') Exit
 $(ColorOrange '------------------------------------------------')
@@ -326,9 +245,7 @@ $(ColorPurple 'Choose an option:') "
         read a
         case $a in
 	        1) script_check_update ; menu ;;
-		2) admin_tools_menu ; menu ;;
-		3) tech_support ; menu ;;
-		4) server_install_menu ; menu ;;
+		2) fresh_server_setup_for_vrising ; menu ;;
 		    0) exit 0 ;;
 		    *)  echo -ne " $(ColorRed 'Wrong option.')" ; menu ;;
         esac
