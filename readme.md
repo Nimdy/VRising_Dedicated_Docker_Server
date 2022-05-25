@@ -23,5 +23,3 @@ UPDATE DIS
  maloneweb/docker-wine-base:latest
  
  honestventures/steamcmd-linux-wine:latest
- 
-OG Script: https://github.com/smb1982/VRising-Dedicated-Server-Linux-Docker
