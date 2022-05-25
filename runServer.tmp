@@ -1,7 +1,0 @@
-#!/bin/bash
-sudo docker run --name "VRisingUpdater" --rm -it -v $PWD/data:/data honestventures/steamcmd-linux-wine:latest +force_install_dir /data +login anonymous +app_update 1829350 validate +quit
-sudo cp data/save-data/ServerHostSettings.json data/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json
-sudo chmod 777 data/VRisingServer_Data/StreamingAssets/Settings/ServerHostSettings.json
-sudo cp data/save-data/ServerGameSettings.json data/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
-sudo chmod 777 data/VRisingServer_Data/StreamingAssets/Settings/ServerGameSettings.json
-sudo docker run -it -d --name vRisingServer --rm -v $PWD/data:/data -p 27015:27015 -p 27016:27016 -p 27015:27015/udp -p 27016:27016/udp vrisingdedserver/wine64:v20052022 /bin/bash -c "cd /data; /usr/bin/xvfb-run wine VRisingServer.exe -persistentDataPath \".\save-data\" -log"
