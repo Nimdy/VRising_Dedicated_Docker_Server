@@ -105,15 +105,6 @@ function script_check_update() {
 function fresh_server_setup_for_vrising() {
 
 apt update && upgrade -y
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release \
-    unzip \
-    git -y
-
-sudo apt update
 sudo apt install docker.io -y
 sudo snap install docker
 
