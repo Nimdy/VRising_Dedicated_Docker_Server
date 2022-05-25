@@ -115,7 +115,7 @@ sudo apt-get install \
 
 sudo apt update
 sudo apt install docker.io -y
-sudo snap install docker
+sudo snap install docker -y
 
 useradd --create-home --shell /bin/bash --password $userpassword steam
 cp /etc/skel/.bashrc /home/steam/.bashrc
