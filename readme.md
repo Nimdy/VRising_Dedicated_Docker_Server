@@ -2,6 +2,8 @@
 # VRising Dedicated Server Linux Docker
 Run a VRising Dedicated Server on Linux via Docker
 
+Visit https://github.com/StunlockStudios/vrising-dedicated-server-instructions for additionall json configuration settings.
+
 # Menu system coming soon for Linux Users only
 
 
