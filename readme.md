@@ -33,6 +33,11 @@ cp configs/adminlist.txt data/VRisingServer_Data/StreamingAssets/Settings/
 cp configs/banlist.txt data/VRisingServer_Data/StreamingAssets/Settings/
 ./start_vrising_container.sh
 ```
+# TO-DOs
+Secure with steam user and not root
+Update menu system
+find free time
+
  ---
  
  Credits;
