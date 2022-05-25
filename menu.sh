@@ -125,6 +125,7 @@ git clone https://github.com/Nimdy/VRising_Dedicated_Docker_Server.git
 cd VRising_Dedicated_Docker_Server
 chmod +x ./* -R
 sudo docker build . -t njordmenu/vrising:latest
+mkdir -p ~steam/data/games/vrising
 cp configs/ServerHostSettings.json /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
 cp configs/ServerGameSettings.json /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
 cp configs/ServerVoipSettings.json /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
