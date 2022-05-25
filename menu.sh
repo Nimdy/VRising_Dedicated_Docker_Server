@@ -122,7 +122,7 @@ cp /etc/skel/.bashrc /home/steam/.bashrc
 cp /etc/skel/.profile /home/steam/.profile
 cd ~steam
 git clone https://github.com/Nimdy/VRising_Dedicated_Docker_Server.git
-cd VRising_Dedicated_Server
+cd VRising_Dedicated_Docker_Server
 chmod +x ./* -R
 mkdir -p data/save-data
 sudo docker build . -t vrisingdedserver/wine64:v20052022
