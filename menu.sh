@@ -125,11 +125,11 @@ git clone https://github.com/Nimdy/VRising_Dedicated_Docker_Server.git
 cd VRising_Dedicated_Docker_Server
 chmod +x ./* -R
 sudo docker build . -t njordmenu/vrising:latest
-cp configs/ServerHostSettings.json data/save-data/ServerHostSettings.json
-cp configs/ServerGameSettings.json data/save-data/ServerGameSettings.json
-cp configs/ServerVoipSettings.json data/save-data/ServerVoipSettings.json
-cp configs/adminlist.txt data/save-data/adminlist.txt
-cp configs/banlist.txt data/save-data/banlist.txt
+cp configs/ServerHostSettings.json /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
+cp configs/ServerGameSettings.json /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
+cp configs/ServerVoipSettings.json /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
+cp configs/adminlist.txt /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
+cp configs/banlist.txt /data/games/vrising/VRisingServer_Data/StreamingAssets/Settings/
 
 }
 
