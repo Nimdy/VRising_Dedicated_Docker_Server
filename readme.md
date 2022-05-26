@@ -4,7 +4,7 @@ Run a VRising Dedicated Server on Linux via Docker (TESTED on Ubuntu 20.04.4 LTS
 
 Visit https://github.com/StunlockStudios/vrising-dedicated-server-instructions for additionall json configuration settings.
 
-# Menu system coming soon for Linux Users only NOT done yet... just follow the steps below without using the menu system and you will be fine
+# Menu system coming soon ... work in progress. Until then just follow the steps below and you can have your own V Rising Server running in Docker.
 
 
 ## Server Hosting Provided By DigitalOcean
