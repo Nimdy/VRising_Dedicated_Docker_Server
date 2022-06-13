@@ -60,7 +60,7 @@ sudo docker build . -t njordmenu/vrising:latest
 ```
 12. Make directory for persistence data (saves, configs ..etc)
 ```
-mkdir -p /home/steam/VRising_Dedicated_Docker_Server/data
+mkdir -p /home/steam/VRising_Dedicated_Docker_Server/data/VRisingServer_Data/StreamingAssets/Settings/
 ```
 13. Copy over the Host Configurations. Change these as you wish.
 ```
