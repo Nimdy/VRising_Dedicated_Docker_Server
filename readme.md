@@ -54,7 +54,7 @@ cd VRising_Dedicated_Docker_Server
 ```
 chmod +x ./* -R
 ```
-11. Build the Docker Image
+11. Build the Docker Image for local use
 ```
 sudo docker build . -t njordmenu/vrising:latest
 ```
